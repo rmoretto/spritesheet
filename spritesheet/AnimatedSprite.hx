@@ -161,7 +161,15 @@ class AnimatedSprite extends Sprite {
 			bitmap.smoothing = smoothing;
 			bitmap.x = frame.offsetX - currentBehavior.originX;
 			bitmap.y = frame.offsetY - currentBehavior.originY;
-			
+
+			if (currentBehavior.flipX) {
+				bitmap.x += bitmap.width;
+			}
+
+			if (currentBehavior.flipY) {
+				bitmap.y += bitmap.height;
+			}
+
 			if (behaviorComplete) {
 				
 				if (behaviorQueue.length > 0) {
@@ -192,7 +200,27 @@ class AnimatedSprite extends Sprite {
 				behaviorComplete = false;
 				
 				loopTime = Std.int ((behavior.frames.length / behavior.frameRate) * 1000);
-				
+
+				if (behavior.flipX) {
+					bitmap.scaleX = -bitmap.scaleX;
+					bitmap.x += bitmap.width;
+				}
+				else if (bitmap.scaleX < 0)
+				{
+					bitmap.scaleX = -bitmap.scaleX;
+					bitmap.x -= bitmap.width;
+				}
+
+				if (behavior.flipY) {
+					bitmap.scaleY = -bitmap.scaleY;
+					bitmap.y += bitmap.height;
+				}
+				else if (bitmap.scaleY < 0)
+				{
+					bitmap.scaleY = -bitmap.scaleY;
+					bitmap.y -= bitmap.height;
+				}
+
 				if (bitmap.bitmapData == null) {
 					
 					update (0);

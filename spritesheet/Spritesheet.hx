@@ -91,7 +91,7 @@ class Spritesheet {
 			bitmapData.copyChannel (sourceImageAlpha, sourceRectangle, targetPoint, 2, 8);
 			
 		}
-		
+
 		frame.bitmapData = bitmapData;
 		
 	}

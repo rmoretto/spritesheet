@@ -14,11 +14,13 @@ class BehaviorData {
 	public var name:String;
 	public var originX:Float;
 	public var originY:Float;
-	
+	public var flipX:Bool;
+	public var flipY:Bool;
+
 	private static var uniqueID:Int = 0;
 	
 	
-	public function new (name:String = "", frames:Array <Int> = null, loop:Bool = false, frameRate:Int = 30, originX:Float = 0, originY:Float = 0) {
+	public function new (name:String = "", frames:Array <Int> = null, loop:Bool = false, frameRate:Int = 30, originX:Float = 0, originY:Float = 0, flipX:Bool = false, flipY:Bool = false) {
 		
 		if (name == "") {
 			
@@ -38,7 +40,9 @@ class BehaviorData {
 		this.frameRate = frameRate;
 		this.originX = originX;
 		this.originY = originY;
-		
+		this.flipX = flipX;
+		this.flipY = flipY;
+
 		frameData = new Array <Dynamic> ();
 		
 		for (i in 0...this.frames.length) {
